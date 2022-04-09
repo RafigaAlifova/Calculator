@@ -1,0 +1,1 @@
+, command=lambda key=key: self.add_digit(key)
