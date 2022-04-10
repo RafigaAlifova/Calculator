@@ -2,11 +2,12 @@ from re import S
 import tkinter as tk
 from unittest.mock import DEFAULT
 
-LIGHT_GRAY='#F5F5F5'
-LABEL_COLOR='#25265E'
-WHITE='#FFFFFF'
-OFF_WHITE='#F8FAFF'
-LIGHT_BLUE="#ccedff"
+LIGHT_GRAY='#f0f0f0' #bg
+LABEL_COLOR='#604878' #num and char color
+WHITE='#c0a8d8' #digits bg
+OFF_WHITE="#a890c0" #operator bg
+LIGHT_BLUE='#9078a8' #equal bg
+
 SMALL_FONT_STYLE=('Arial', 16)
 LARGE_FONT_STYLE=('Arial', 40, 'bold')
 DIGITS_FONT_STYLE=('Arial', 24, 'bold')
@@ -45,6 +46,8 @@ class Calculator:
 
     def create_special_buttons(self):
         self.create_clear_button()
+        self.create_square_button()
+        self.create_sqrt_button()
         self.create_equals_button()
 
     def create_display_labels(self):
@@ -91,7 +94,23 @@ class Calculator:
     
     def create_clear_button(self):
         button = tk.Button(self.buttons_frame, text="C", bg=OFF_WHITE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.clear)
-        button.grid(row=0, column=1,columnspan=3, sticky=tk.NSEW)
+        button.grid(row=0, column=1, sticky=tk.NSEW)
+    
+    def square(self):
+        self.current_expression = str(eval(self.current_expression)**2)
+        self.update_label()
+    
+    def create_square_button(self):
+        button = tk.Button(self.buttons_frame, text="x\u00b2", bg=OFF_WHITE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.square)
+        button.grid(row=0, column=2, sticky=tk.NSEW)
+    
+    def sqrt(self):
+        self.current_expression = str(eval(f"{self.current_expression}**0.5"))
+        self.update_label()
+    
+    def create_sqrt_button(self):
+        button = tk.Button(self.buttons_frame, text="\u221ax", bg=OFF_WHITE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.sqrt)
+        button.grid(row=0, column=3, sticky=tk.NSEW)
       
     def evaluate(self):
         self.total_expression += self.current_expression
