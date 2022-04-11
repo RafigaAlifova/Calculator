@@ -2,11 +2,11 @@ from re import S
 import tkinter as tk
 from unittest.mock import DEFAULT
 
-LIGHT_GRAY='#f0f0f0' #bg
-LABEL_COLOR='#604878' #num and char color
-WHITE='#c0a8d8' #digits bg
-OFF_WHITE="#a890c0" #operator bg
-LIGHT_BLUE='#9078a8' #equal bg
+LIGHT_GRAY='#ebebeb' #bg
+LABEL_COLOR='#000e75' #num and char color
+WHITE='#ffffff' #digits bg
+OFF_WHITE="#f5f5f5" #operator bg
+LIGHT_BLUE='#99ccff' #equal bg
 
 SMALL_FONT_STYLE=('Arial', 16)
 LARGE_FONT_STYLE=('Arial', 40, 'bold')
